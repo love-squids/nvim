@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\Radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "C:\\Users\\Radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\copilot.vim",
-    url = "https://github.com/github/copilot.vim"
-  },
   ["flutter-tools.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\flutter-tools.nvim",
@@ -194,6 +189,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-sneak"] = {
+    loaded = true,
+    path = "C:\\Users\\Radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-sneak",
+    url = "https://github.com/justinmk/vim-sneak"
   },
   ["zen-mode.nvim"] = {
     loaded = true,

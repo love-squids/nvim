@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use('justinmk/vim-sneak')
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -50,7 +51,6 @@ return require('packer').startup(function(use)
   }
 
   use("folke/zen-mode.nvim")
-  use("github/copilot.vim")
 
   use "tenxsoydev/size-matters.nvim"
 

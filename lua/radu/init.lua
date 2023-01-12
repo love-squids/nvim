@@ -1,5 +1,6 @@
 require("radu.set")
 require("radu.remap")
+require("radu.neovide")
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
@@ -22,7 +23,7 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = ThePrimeagenGroup,
     pattern = "*",
     command = "%s/\\s\\+$//e",
@@ -31,3 +32,15 @@ autocmd({"BufWritePre"}, {
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+vim.opt.smartindent = true
+vim.cmd([[
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+
+  " if the search string has an upper case letter in it, the search will be case sensitive
+  set smartcase
+  set ignorecase
+
+]])
+vim.opt.clipboard = "unnamedplus"
+print(vim.cmd.cd("c:/w/hupu"))
