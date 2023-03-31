@@ -39,15 +39,31 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", function()
-  print("Formated");
-  vim.lsp.buf.format()
+  if (vim.bo.filetype == "dart") then
+    local startTime = os.clock();
+    local file = vim.fn.expand("%");
+    print("flutter formating " .. file);
+    vim.cmd([[
+    :w!
+    ]])
+    local output = vim.fn.system("flutter format " .. file);
+    print(output)
+    vim.cmd([[
+    :e!
+    :w!
+    ]])
+    print("Finished formating " .. file .. " in " .. os.clock() - startTime);
+  else
+    vim.lsp.buf.format()
+    print("Formated " .. vim.bo.filetype .. " file");
+  end
 end)
 
 radu_prevCwd = vim.fn.getcwd()
+local nvimconfig = vim.fn.stdpath("config");
 vim.keymap.set("n", "<F3>", function()
-  if (vim.fn.getcwd() == vim.fn.stdpath("config"))
+  if (vim.fn.getcwd() == nvimconfig)
   then
     vim.cmd.cd(radu_prevCwd)
   else
@@ -69,3 +85,6 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
+
+vim.keymap.set('n', '<leader>vv', function() Echo_caca() end)
+vim.cmd('source ' .. nvimconfig ..'\\lua\\radu\\remap.vim')

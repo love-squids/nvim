@@ -1,6 +1,7 @@
 require("radu.set")
 require("radu.remap")
 require("radu.neovide")
+require("radu.echo_caca")
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})

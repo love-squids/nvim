@@ -9,6 +9,12 @@ require'nvim-treesitter.configs'.setup {
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
 
+  query_linter = {
+    enable = true,
+    use_virtual_text = true,
+    lint_events = {"BufWrite", "CursorHold"},
+  },
+
   highlight = {
     -- `false` will disable the whole extension
     enable = true,
