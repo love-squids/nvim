@@ -2,6 +2,8 @@ require("radu.set")
 require("radu.remap")
 require("radu.neovide")
 require("radu.echo_caca")
+require('radu.packer')
+
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
@@ -44,4 +46,4 @@ vim.cmd([[
 
 ]])
 vim.opt.clipboard = "unnamedplus"
-print(vim.cmd.cd("c:/w/hupu"))
+print(vim.cmd.cd("c:/w/hupu/web"))

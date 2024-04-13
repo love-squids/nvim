@@ -1,3 +1,4 @@
+require("telescope")
 require("telescope").load_extension "flutter"
 
 local builtin = require('telescope.builtin')
