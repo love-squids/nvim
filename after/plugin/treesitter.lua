@@ -1,13 +1,23 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "javascript", "typescript", "lua", "dart" },
+  ensure_installed = {
+    "javascript",
+    "typescript",
+    "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query",
+    "markdown",
+    "markdown_inline"
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+  sync_install = true,
 
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
+  auto_install = false,
 
   query_linter = {
     enable = true,
@@ -17,7 +27,7 @@ require'nvim-treesitter.configs'.setup {
 
   highlight = {
     -- `false` will disable the whole extension
-    enable = true,
+    enable = false,
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).

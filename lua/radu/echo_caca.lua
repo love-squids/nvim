@@ -137,3 +137,19 @@ function Echo_caca()
   local debug = getDebugPrint(indent_nr, fn, var, className);
   vim.fn.appendbufline(bufnr, lineNum, debug);
 end
+
+
+function GetTableKeys(tab)
+  local keyset = {}
+  for k,v in pairs(tab) do
+    keyset[#keyset + 1] = k
+  end
+  return keyset
+end
+
+function PrintTableKeys(tab)
+  print('started');
+  for k, _ in pairs(tab) do
+    print(k)
+  end
+end

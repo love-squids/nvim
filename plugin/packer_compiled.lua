@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1703942320\\share\\lua\\5.1\\?.lua;C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1703942320\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1703942320\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1703942320\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
-local install_cpath_pattern = "C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1703942320\\lib\\lua\\5.1\\?.so"
+local package_path_str = "C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\share\\lua\\5.1\\?.lua;C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
+local install_cpath_pattern = "C:\\Users\\radu\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\lib\\lua\\5.1\\?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -119,12 +119,22 @@ _G.packer_plugins = {
     path = "C:\\Users\\radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
-  ["lsp-zero.nvim"] = {
-    load_after = {},
-    loaded = true,
+  ["lazydev.nvim"] = {
+    loaded = false,
     needs_bufread = false,
-    path = "C:\\Users\\radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\lsp-zero.nvim",
+    only_cond = false,
+    path = "C:\\Users\\radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\lazydev.nvim",
+    url = "https://github.com/folke/lazydev.nvim"
+  },
+  ["lsp-zero.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
+  ["luvit-meta"] = {
+    loaded = true,
+    path = "C:\\Users\\radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\luvit-meta",
+    url = "https://github.com/Bilal2453/luvit-meta"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -135,11 +145,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  neoconf = {
-    loaded = true,
-    path = "C:\\Users\\radu\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neoconf",
-    url = "https://github.com/folke/neoconf.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -214,11 +219,13 @@ time([[Defining packer_plugins]], false)
 time([[Config for rose-pine]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
 time([[Config for rose-pine]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd neoconf ]]
-vim.cmd [[ packadd lsp-zero.nvim ]]
-time([[Sequenced loading]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'lazydev.nvim'}, { ft = "lua" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

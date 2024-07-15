@@ -73,6 +73,7 @@ vim.keymap.set("n", "<F3>", function()
   print("New Current Directory: ", vim.fn.getcwd())
 end)
 
+vim.keymap.set("n", "<F4>", ":so<CR>")
 vim.keymap.set("n", "<Home>j", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<Home>k", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
